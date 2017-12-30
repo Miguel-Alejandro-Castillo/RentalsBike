@@ -11,11 +11,11 @@ public class RentalByHour extends Rental {
 
     @Override
     public double discount() {
-        return 1;
+        return 0;
     }
     @Override
     public double charge() {
-        return this.price() * this.discount();
+        return this.price();
     }
     @Override
     public boolean equals(Object o) {

@@ -13,6 +13,7 @@ public class FamilyRentalTest {
 
     private FamilyRental familyRentalWithFiveRentals;
     private FamilyRental familyRentalWithThreeRentals;
+    private FamilyRental familyRental;
 
     @Before
     public void setUp() throws Exception {
@@ -24,7 +25,7 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que el listado de alquileres de un alquiler familiar  no sea nulo
+     * Este test chequea que no se cree un alquiler familiar  con un listado de alquileres  nulo
      * @throws Exception
      */
     @Test(expected = Exception.class)
@@ -34,7 +35,7 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que el listado de alquileres de un alquiler familiar  no este vacio
+     * Este test chequea que no se cree un alquiler familiar con un listado de alquileres vacio
      *
      * @throws Exception
      */
@@ -59,7 +60,7 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que no se pueda agregar un alquiler a un listado de alquileres lleno de un alquiler familiar
+     * Este test chequea que no se pueda agregar un alquiler a un listado de 5 alquileres de un alquiler familiar
      *
      * @throws Exception
      */
@@ -120,6 +121,45 @@ public class FamilyRentalTest {
     }
 
 
+    /**
+     * Este test chequea que se obtenga el precio total  correcto de los alquileres de un alquiler familiar sin descuentos
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testPriceTotalWithoutDiscount() throws Exception {
+        List<Rental> rentals1=new ArrayList<Rental>();
+        Collections.addAll(rentals1, new RentalByDay(),new RentalByHour(),new RentalByWeek());
+        FamilyRental familyRental1=new FamilyRental(rentals1);
+        List<Rental> rentals2= new ArrayList<Rental>();
+        Collections.addAll(rentals2, new RentalByDay(),new RentalByHour(),new RentalByWeek(),new RentalByDay(),familyRental1);
+        familyRental=new FamilyRental(rentals2);
+        assertEquals("El monto total sin descuentos resultante no es el esperado",190.0, familyRental.price(),0);
 
+    }
+
+    /**
+     * Este test chequea que se obtenga el valor total que se descuenta sobre el precio total de los  alquileres de un alquiler familiar
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testTotalDiscount() throws Exception {
+        testPriceTotalWithoutDiscount();
+        assertEquals("El monto a ser descontado resultante no es el esperado",57.0, familyRental.discount(),0);
+
+    }
+
+    /**
+     * Este test chequea que se obtenga el precio total  correcto de los alquileres de un alquiler familiar con descuentos
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testPriceTotalWithDiscount() throws Exception {
+       testPriceTotalWithoutDiscount();
+        assertEquals("El monto total con descuentos resultante no es el esperado",133.0, familyRental.charge(),0);
+
+    }
 
 }

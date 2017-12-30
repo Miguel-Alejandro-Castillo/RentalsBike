@@ -40,14 +40,17 @@ public class FamilyRental extends Rental {
         return price;
     }
 
+    private double discountRate(){
+        return 30;
+    }
     @Override
     public double discount() {
-        return 0.3;
+        return (this.price()*this.discountRate())/100;
     }
 
     @Override
     public double charge() {
-        return this.price() * this.discount();
+        return this.price()-this.discount();
     }
 
     public void addRental(Rental rental) throws Exception{
