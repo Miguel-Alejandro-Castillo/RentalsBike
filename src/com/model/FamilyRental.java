@@ -27,7 +27,7 @@ public class FamilyRental extends Rental {
             if(cantRentals >= SIZE_MIN_LIST_RENTALS && cantRentals <= SIZE_MAX_LIST_RENTALS )
                 this.rentals=rentals;
             else
-                throw new Exception("El alquiler familiar no tiene entre 3 y 5 alquileres ");
+                throw new Exception("El alquiler familiar no tiene entre "+SIZE_MIN_LIST_RENTALS+" y "+SIZE_MAX_LIST_RENTALS+" alquileres");
         }
         else
             throw new Exception("El alquiler familiar no posee alquileres");
@@ -58,14 +58,14 @@ public class FamilyRental extends Rental {
         if(this.getRentals().size() < SIZE_MAX_LIST_RENTALS)
             this.getRentals().add(rental);
         else
-            throw new Exception("No se puede agregar mas alquileres");
+            throw new Exception("No se puede agregar ningun alquiler");
     }
     public void removeRental(Rental rental) throws Exception{
          if(this.getRentals().contains(rental) ) {
              if (this.getRentals().size() > SIZE_MIN_LIST_RENTALS)
                  this.getRentals().remove(rental);
              else
-                 throw new Exception("No se puede borrar el alquiler");
+                 throw new Exception("No se puede borrar ningun alquiler");
          }
 
     }
