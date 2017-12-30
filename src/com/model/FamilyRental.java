@@ -8,7 +8,8 @@ import java.util.List;
 public class FamilyRental extends Rental {
 
     private List<Rental> rentals;
-
+    private static final int SIZE_MIN_LIST_RENTALS=3;
+    private static final int SIZE_MAX_LIST_RENTALS=5;
     private FamilyRental() {
     }
 
@@ -23,7 +24,7 @@ public class FamilyRental extends Rental {
     public void setRentals(List<Rental> rentals) throws Exception {
         if(rentals !=null && !rentals.isEmpty()){
             int cantRentals=rentals.size();
-            if(cantRentals >= 3 && cantRentals <= 5 )
+            if(cantRentals >= SIZE_MIN_LIST_RENTALS && cantRentals <= SIZE_MAX_LIST_RENTALS )
                 this.rentals=rentals;
             else
                 throw new Exception("El alquiler familiar no tiene entre 3 y 5 alquileres ");
@@ -54,14 +55,19 @@ public class FamilyRental extends Rental {
     }
 
     public void addRental(Rental rental) throws Exception{
-        if(this.getRentals().size() < 5)
+        if(this.getRentals().size() < SIZE_MAX_LIST_RENTALS)
             this.getRentals().add(rental);
         else
-            throw new Exception("No se pueden agregar mas alquileres");
+            throw new Exception("No se puede agregar mas alquileres");
     }
     public void removeRental(Rental rental) throws Exception{
-         if(this.getRentals().remove(rental) && this.getRentals().size() < 3 )
-                    throw new Exception("No se puede borrar ningun alquiler");
+         if(this.getRentals().contains(rental) ) {
+             if (this.getRentals().size() > SIZE_MIN_LIST_RENTALS)
+                 this.getRentals().remove(rental);
+             else
+                 throw new Exception("No se puede borrar el alquiler");
+         }
+
     }
 
     @Override

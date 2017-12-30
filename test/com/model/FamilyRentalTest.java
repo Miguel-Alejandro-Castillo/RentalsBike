@@ -1,13 +1,9 @@
 package com.model;
-
-
 import org.junit.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static org.junit.Assert.*;
-
 
 public class FamilyRentalTest {
 
@@ -31,7 +27,7 @@ public class FamilyRentalTest {
     @Test(expected = Exception.class)
     public void testListRentalsNull() throws Exception {
        new FamilyRental(null);
-        fail("Se creo un alquiler familiar con un listado de alquileres nulo");
+       fail("Se creo un alquiler familiar con un listado de alquileres nulo");
     }
 
     /**
@@ -46,7 +42,7 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que un alquiler familiar que se crea con 5 alquileres, efectivamente posea 5 alquileres en su lista de alquileres
+     * Este test chequea que se pueda crear un alquiler familiar con 5 alquileres
      *
      * @throws Exception
      */
@@ -72,19 +68,20 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que halla se halla agregado un alquiler a un listado de 3 alquileres(listado de alquileres con cantidad minima necesaria) de un alquiler familiar
+     * Este test chequea que  se pueda eliminar un alquiler de un listado de 5 alquileres de un alquiler familiar
      *
      * @throws Exception
      */
     @Test
-    public void testAddRentalInMinimumListRentals() throws Exception {
-        testCreateFamilyRentalWithThreeRentals();
-        this.familyRentalWithThreeRentals.addRental(new RentalByWeek());
-        assertEquals("No se agrego el alquiler al listado de 3 alquileres",4, familyRentalWithThreeRentals.getRentals().size());
+    public void testRemoveRentalInFullListRentals() throws Exception {
+        testCreateFamilyRentalWithFiveRentals();
+        this.familyRentalWithFiveRentals.removeRental(new RentalByWeek());
+        assertEquals("No se elimino el alquiler del listado de 5 alquileres del alquiler familiar ",4,familyRentalWithFiveRentals.getRentals().size());
     }
 
+
     /**
-     * Este test chequea que un alquiler familiar que se crea con 3 alquileres, efectivamente posea 3 alquileres en su lista de alquileres
+     * Este test chequea que se pueda crear un alquiler familiar con 3 alquileres
      *
      * @throws Exception
      */
@@ -96,8 +93,22 @@ public class FamilyRentalTest {
         assertEquals("el alquiler familiar no tiene 3 alquileres en su lista de alquileres",3,familyRentalWithThreeRentals.getRentals().size());
 
     }
+
     /**
-     * Este test chequea que no se pueda eliminar un alquiler de un listado de alquileres con cantidad minima de un alquiler familiar
+     * Este test chequea que se halla  agregado un alquiler a un listado de 3 alquileres(listado de alquileres con cantidad minima necesaria) de un alquiler familiar
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAddRentalInMinimumListRentals() throws Exception {
+        testCreateFamilyRentalWithThreeRentals();
+        this.familyRentalWithThreeRentals.addRental(new RentalByWeek());
+        assertEquals("No se agrego el alquiler al listado de 3 alquileres",4, familyRentalWithThreeRentals.getRentals().size());
+    }
+
+
+    /**
+     * Este test chequea que no se pueda eliminar un alquiler de un listado de 3 alquileres  de un alquiler familiar
      *
      * @throws Exception
      */
@@ -108,21 +119,10 @@ public class FamilyRentalTest {
         fail("Se elimino un alquiler de un listado de alquileres con cantidad minima necesaria de un alquiler familiar");
     }
 
-    /**
-     * Este test chequea que se halla eliminado  un alquiler de un listado de 5  alquileres(listado de alquileres lleno) de un alquiler familiar
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testRemoveRentalInFullRentalsList() throws Exception {
-        testCreateFamilyRentalWithFiveRentals();
-        familyRentalWithFiveRentals.removeRental(new RentalByWeek());
-        assertEquals("No se elimino el alquiler del listado de alquileres",4, familyRentalWithFiveRentals.getRentals().size());
-    }
 
 
     /**
-     * Este test chequea que se obtenga el precio total  correcto de los alquileres de un alquiler familiar sin descuentos
+     * Este test chequea que se obtenga correctamente el precio total  sin descuento  de un alquiler familiar
      *
      * @throws Exception
      */
@@ -134,12 +134,12 @@ public class FamilyRentalTest {
         List<Rental> rentals2= new ArrayList<Rental>();
         Collections.addAll(rentals2, new RentalByDay(),new RentalByHour(),new RentalByWeek(),new RentalByDay(),familyRental1);
         familyRental=new FamilyRental(rentals2);
-        assertEquals("El monto total sin descuentos resultante no es el esperado",190.0, familyRental.price(),0);
+        assertEquals("El monto total sin descuento resultante no es el esperado",190.0, familyRental.price(),0);
 
     }
 
     /**
-     * Este test chequea que se obtenga el valor total que se descuenta sobre el precio total de los  alquileres de un alquiler familiar
+     * Este test chequea que se obtenga correctamente el valor total que se descuenta de un alquiler familiar
      *
      * @throws Exception
      */
@@ -151,14 +151,14 @@ public class FamilyRentalTest {
     }
 
     /**
-     * Este test chequea que se obtenga el precio total  correcto de los alquileres de un alquiler familiar con descuentos
+     * Este test chequea que se obtenga correctamente el precio total con descuento  de un alquiler familiar
      *
      * @throws Exception
      */
     @Test
     public void testPriceTotalWithDiscount() throws Exception {
        testPriceTotalWithoutDiscount();
-        assertEquals("El monto total con descuentos resultante no es el esperado",133.0, familyRental.charge(),0);
+        assertEquals("El monto total con descuento resultante no es el esperado",133.0, familyRental.charge(),0);
 
     }
 
