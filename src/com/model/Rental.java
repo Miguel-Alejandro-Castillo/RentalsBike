@@ -5,6 +5,14 @@ package com.model;
  */
 public abstract class Rental {
     public abstract  double price();
-    public abstract double discount();
-    public abstract  double charge();
+    public  double discount(){
+        return 0;
+    }
+    public double charge() {
+        return this.price();
+    }
+    @Override
+    public boolean equals(Object o) {
+        return o != null && getClass() == o.getClass();
+    }
 }

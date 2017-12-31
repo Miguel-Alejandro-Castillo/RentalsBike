@@ -9,17 +9,4 @@ public class RentalByHour extends Rental {
         return 5;
     }
 
-    @Override
-    public double discount() {
-        return 0;
-    }
-    @Override
-    public double charge() {
-        return this.price();
-    }
-    @Override
-    public boolean equals(Object o) {
-        return o != null && getClass() == o.getClass();
-    }
-
 }

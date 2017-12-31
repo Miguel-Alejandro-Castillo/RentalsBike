@@ -10,9 +10,9 @@ public class FamilyRental extends Rental {
     private List<Rental> rentals;
     private static final int SIZE_MIN_LIST_RENTALS=3;
     private static final int SIZE_MAX_LIST_RENTALS=5;
+
     private FamilyRental() {
     }
-
     public FamilyRental(List<Rental> rentals) throws Exception{
         super();
         this.setRentals(rentals);

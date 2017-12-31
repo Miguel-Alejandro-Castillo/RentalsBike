@@ -23,11 +23,24 @@ public class FamilyRentalTest {
     /**
      * Este test chequea que no se cree un alquiler familiar  con un listado de alquileres  nulo
      * @throws Exception
-     */
+    **/
     @Test(expected = Exception.class)
-    public void testListRentalsNull() throws Exception {
+    public void testNotCreateFamilyRentalWithListRentalsNull() throws Exception {
        new FamilyRental(null);
        fail("Se creo un alquiler familiar con un listado de alquileres nulo");
+    }
+
+    /**
+     * Este test chequea que no se modifique un listado de alquileres de un  alquiler familiar con null
+     * @throws Exception
+     **/
+    @Test(expected = Exception.class)
+    public void testNotModifyFamilyRentalWithListRentalsInNull() throws Exception {
+        List<Rental> rentals=new ArrayList<Rental>();
+        Collections.addAll(rentals, new RentalByDay(),new RentalByHour(),new RentalByWeek());
+        FamilyRental familyRental=new FamilyRental(rentals);
+        familyRental.setRentals(null);
+        fail("Se modifico el alquiler familiar con su listado de alquileres en nulo");
     }
 
     /**
@@ -36,11 +49,23 @@ public class FamilyRentalTest {
      * @throws Exception
      */
     @Test(expected = Exception.class)
-    public void testListRentalsEmpty() throws Exception {
+    public void testNotCreateFamilyRentalWithListRentalsEmpty() throws Exception {
         new FamilyRental(new ArrayList<Rental>());
         fail("Se creo un alquiler familiar con un listado de alquileres vacio");
     }
 
+    /**
+     * Este test chequea que no se modifique un listado de alquileres de un  alquiler familiar en vacio
+     * @throws Exception
+     **/
+    @Test(expected = Exception.class)
+    public void testNotModifyFamilyRentalWithListRentalsInEmpty() throws Exception {
+        List<Rental> rentals=new ArrayList<Rental>();
+        Collections.addAll(rentals, new RentalByDay(),new RentalByHour(),new RentalByWeek());
+        FamilyRental familyRental=new FamilyRental(rentals);
+        familyRental.setRentals(new ArrayList<Rental>());
+        fail("Se modifico el alquiler familiar con su listado de alquileres en vacio");
+    }
     /**
      * Este test chequea que se pueda crear un alquiler familiar con 5 alquileres
      *

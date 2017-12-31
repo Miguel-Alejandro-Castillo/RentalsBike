@@ -1,2 +1,2 @@
-Mi diseño  esta basado en el patron de diseño Composite. Por el dominio  del enunciado decidi  modelar una solucion usando este patron
+Mi diseño esta basado en el patron de diseño Composite. Por el dominio del enunciado decidi modelar una solucion usando este patron
 porque visualize una jerarquia  de alquileres donde un alquiler familiar es una composicion de alquileres

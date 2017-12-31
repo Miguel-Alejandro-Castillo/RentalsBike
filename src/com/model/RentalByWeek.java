@@ -8,20 +8,4 @@ public class RentalByWeek extends Rental{
     public double price() {
         return 60;
     }
-
-    @Override
-    public double discount() {
-        return 0;
-    }
-    @Override
-    public double charge() {
-        return this.price();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return o != null && getClass() == o.getClass();
-    }
-
-
 }
