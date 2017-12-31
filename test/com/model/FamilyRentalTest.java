@@ -36,10 +36,8 @@ public class FamilyRentalTest {
      **/
     @Test(expected = Exception.class)
     public void testNotModifyFamilyRentalWithListRentalsInNull() throws Exception {
-        List<Rental> rentals=new ArrayList<Rental>();
-        Collections.addAll(rentals, new RentalByDay(),new RentalByHour(),new RentalByWeek());
-        FamilyRental familyRental=new FamilyRental(rentals);
-        familyRental.setRentals(null);
+        testCreateFamilyRentalWithThreeRentals();
+        familyRentalWithThreeRentals.setRentals(null);
         fail("Se modifico el alquiler familiar con su listado de alquileres en nulo");
     }
 
@@ -60,11 +58,9 @@ public class FamilyRentalTest {
      **/
     @Test(expected = Exception.class)
     public void testNotModifyFamilyRentalWithListRentalsInEmpty() throws Exception {
-        List<Rental> rentals=new ArrayList<Rental>();
-        Collections.addAll(rentals, new RentalByDay(),new RentalByHour(),new RentalByWeek());
-        FamilyRental familyRental=new FamilyRental(rentals);
-        familyRental.setRentals(new ArrayList<Rental>());
-        fail("Se modifico el alquiler familiar con su listado de alquileres en vacio");
+        testCreateFamilyRentalWithThreeRentals();
+        familyRentalWithThreeRentals.setRentals(new ArrayList<Rental>());
+        fail("Se modifico el alquiler familiar con su listado de alquileres en ");
     }
     /**
      * Este test chequea que se pueda crear un alquiler familiar con 5 alquileres
@@ -86,7 +82,7 @@ public class FamilyRentalTest {
      * @throws Exception
      */
     @Test(expected = Exception.class)
-    public void testAddRentalInFullListRentals() throws Exception {
+    public void testNotAddRentalInFullListRentals() throws Exception {
         testCreateFamilyRentalWithFiveRentals();
         this.familyRentalWithFiveRentals.addRental(new RentalByWeek());
         fail("Se agrego un alquiler al listado de alquileres lleno del alquiler familiar");
@@ -138,7 +134,7 @@ public class FamilyRentalTest {
      * @throws Exception
      */
     @Test(expected = Exception.class)
-    public void testRemoveRentalInAMinimumRentalsList() throws Exception {
+    public void testNotRemoveRentalInAMinimumRentalsList() throws Exception {
         testCreateFamilyRentalWithThreeRentals();
         familyRentalWithThreeRentals.removeRental(new RentalByWeek());
         fail("Se elimino un alquiler de un listado de alquileres con cantidad minima necesaria de un alquiler familiar");
