@@ -3,7 +3,8 @@ porque el problema implica una jerarquia  de alquileres, donde un alquiler famil
 de que el familiar  tiene entre 3 y 5 alquileres.
 
 Practicas de desarrollo usadas:
-
+    
+    *Evitar codigo innecesario
     *Evitar codigo repetitivo
     *Uso de nombres descriptivos en variables, metodos y clases
     *Uso de la notacion camel case para los nombres de variables, metodos y clases
