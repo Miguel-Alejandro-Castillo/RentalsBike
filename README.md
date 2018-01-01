@@ -8,6 +8,7 @@ Practicas de desarrollo usadas:
     *Uso de nombres descriptivos en variables, metodos y clases
     *Uso de la notacion camel case para los nombres de variables, metodos y clases
     *Evitar logica intrincada
+    *Variables de instancia privadas
     
 
 
