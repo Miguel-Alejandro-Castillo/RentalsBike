@@ -2,7 +2,13 @@ Mi diseño esta basado en el patron de diseño Composite. Por el dominio del enu
 porque el problema implica una jerarquia  de alquileres, donde un alquiler familiar es una composicion de otros  alquileres, con la restriccion
 de que el familiar  tiene entre 3 y 5 alquileres.
 
+Practicas de desarrollo usadas:
 
+    *Evitar codigo repetitivo
+    *Uso de nombres descriptivos en variables, metodos y clases
+    *Uso de la notacion camel case para los nombres de variables, metodos y clases
+    *Evitar logica intrincada
+    
 
 
 Requerimientos para ejecutar los tests:
