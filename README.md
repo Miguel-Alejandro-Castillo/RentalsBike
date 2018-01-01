@@ -4,7 +4,6 @@ de que el familiar  tiene entre 3 y 5 alquileres.
 
 
 Requerimientos para ejecutar los tests:
- 
    1.- Sistema operativo Windows XP, 7, 8, o 10
    2.- JDK 6,7 u 8 instalado  
    3.- Ruta al directorio bin del JDK instalado agregada en la variable de entorno Path
